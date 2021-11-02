@@ -12,9 +12,11 @@ def video_url_creator(id_lst):
         videos.append(video)
     return videos
 
-client = MongoClient()
-db = client.Playlister
+uri = 'mongodb://localhost/Playlister'
+client = MongoClient(uri)
+db = client.get_default_database()
 playlists = db.playlists
+comments = db.comments
 
 @app.route('/')
 def playlists_index():
@@ -29,8 +31,9 @@ def playlists_new():
 @app.route('/playlists/<playlist_id>')
 def playlists_show(playlist_id):
     """Show a single playlist."""
-    playlist = playlists.find_one({'_id': ObjectId(playlist_id)}) 
-    return render_template('playlists_show.html', playlist=playlist)
+    playlist = playlists.find_one({'_id': ObjectId(playlist_id)})
+    playlist_comments = comments.find({'playlist_id': ObjectId(playlist_id)}) 
+    return render_template('playlists_show.html', playlist=playlist, comments=playlist_comments)
 
 # Note the methods parameter that explicitly tells the route that this is a POST
 @app.route('/playlists', methods=['POST'])
@@ -81,6 +84,19 @@ def playlists_update(playlist_id):
         {'$set': updated_playlist})
     # take us back to the playlist's show page
     return redirect(url_for('playlists_show', playlist_id=playlist_id))
+
+# Add this header to distinguish Comment routes from Playlist routes
+########## COMMENT ROUTES ##########
+
+@app.route('/playlists/comments', methods=['POST'])
+def comments_new():
+    comment = {
+        'playlist_id':ObjectId(request.form.get('playlist_id')),
+        'title': request.form.get('title'),
+        'content': request.form.get('content')
+    }
+    comments.insert_one(comment) 
+    return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
 
 if __name__ == '__main__':
     app.run(debug=True)
