@@ -15,11 +15,12 @@
         {% endfor %}
         <div>
             <br><a href="/playlists/{{playlist._id}}/edit">
-                <button class='btn btn-primary' type='submit'>Edit</button>
+                <button class='btn btn-primary' type='submit'>Edit</button></a>
             <p><form method='POST' action='/playlists/{{ playlist._id }}/delete'>
                 <button class='btn btn-primary' type='submit'>Delete</button>
             </form></p>
         </div>
     </div>
 </div>
+
 {% endblock %}
