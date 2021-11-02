@@ -2,18 +2,24 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2><a href="/">Back to Home</a></h2>
-
-<h1>{{ playlist.title }}</h1>
-<h2>{{ playlist.description }}</h2>
-<h3>{{ playlist.rating }}</h3>
-{% for video in playlist.videos %}
-    <iframe width='420' height='315' src='{{ video }}'></iframe>
-{% endfor %}
-<p><a href="/playlists/{{playlist._id}}/edit">Edit:</a></p>
-<!-- New code to add below -->
-<!-- Delete button -->
-<p><form method='POST' action='/playlists/{{ playlist._id }}/delete'>
-    <button type='submit'>Delete</button>
-</form></p>
+<a href="/">Back to Home</a>
+<div class='row'>
+    <div class='col-sm-6 col-sm-offset-3'>
+        <h1>{{ playlist.title }}</h1>
+        <h2>{{ playlist.description }}</h2>
+        <h3>{{ playlist.rating }}</h3>
+        {% for video in playlist.videos %}
+            <div class="card card-body" style="align-items: center;">
+                <iframe width='420' height='315' src='{{ video }}'></iframe>
+            </div>
+        {% endfor %}
+        <div>
+            <br><a href="/playlists/{{playlist._id}}/edit">
+                <button class='btn btn-primary' type='submit'>Edit</button>
+            <p><form method='POST' action='/playlists/{{ playlist._id }}/delete'>
+                <button class='btn btn-primary' type='submit'>Delete</button>
+            </form></p>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -16,12 +16,6 @@ client = MongoClient()
 db = client.Playlister
 playlists = db.playlists
 
-# OUR MOCK ARRAY OF PROJECTS
-# playlists = [
-#     { 'title': 'Cat Videos', 'description': 'Cats acting weird' },
-#     { 'title': '80\'s Music', 'description': 'Don\'t stop believing!' },
-# ]
-
 @app.route('/')
 def playlists_index():
     """Show all playlists."""
@@ -55,8 +49,6 @@ def playlists_submit():
     }
     playlists.insert_one(playlist) #once the playlist db is accessed, you can call the id
     return redirect(url_for('playlists_show', playlist_id=playlist['_id'])) #look up playlist_id
-    # return render_template('playlists_show.html', playlist=playlist)    
-    # return redirect(url_for('playlists_show'),playlist_id=playlist['_id'])
 
 @app.route('/playlists/<playlist_id>/delete', methods=['POST'])
 def playlists_delete(playlist_id):

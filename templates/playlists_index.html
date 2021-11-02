@@ -3,13 +3,19 @@
 
 {% block content %}
 <h1>Playlists</h1>
-
-<!-- New link here -->
 <a href='/playlists/new'>New Playlist</a>
 
-{% for playlist in playlists %}
-    <h2><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2>
-    <small>{{ playlist.description }}</small>
-    <p>Rate for the video: {{ playlist.rating }}</p>
-{% endfor %}
+<div class='row'>
+    {% for playlist in playlists %}
+        <div class='col-md-3'>
+            <div class="card bg-light">
+                <div class="card-header"><h2><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2></div>
+                <div class="card-body">
+                  <small>{{ playlist.description }}</small>
+                  <p>Rate for the video: {{ playlist.rating }}</p>                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+</div>
 {% endblock %}
