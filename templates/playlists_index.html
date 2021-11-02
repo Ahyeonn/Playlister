@@ -10,7 +10,8 @@
 {% for playlist in playlists %}
     <h2><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2>
     <small>{{ playlist.description }}</small>
-    <p>Rate for the video: {{ playlist.video_rate}}</p>
+    <p>Rate for the video: {{ playlist.rating }}</p>
+    <h3><a href='/playlists/{{ playlist._id }}/delete'> Delete </a></h3>
     <!-- <p>{{ playlist.videos }}</p>
     <p>{{ playlist.video_ids }}</p> -->
 {% endfor %}
