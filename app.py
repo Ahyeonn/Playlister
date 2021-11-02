@@ -58,10 +58,10 @@ def playlists_submit():
     # return render_template('playlists_show.html', playlist=playlist)    
     # return redirect(url_for('playlists_show'),playlist_id=playlist['_id'])
 
-@app.route('/playlists/<playlist_id>/delete')
+@app.route('/playlists/<playlist_id>/delete', methods=['POST'])
 def playlists_delete(playlist_id):
+    """Delete one playlist."""
     playlists.delete_one({'_id': ObjectId(playlist_id)})
-    # return render_template('playlists_index.html')
     return redirect(url_for('playlists_index'))
 
 @app.route('/playlists/<playlist_id>/edit')
