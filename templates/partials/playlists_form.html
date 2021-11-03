@@ -1,22 +1,17 @@
-<!-- templates/partials/playlists_form.html -->
-
 <fieldset>
     <div style="color: rgb(105, 114, 112); padding-top: 15px;">
       <legend style="font-weight: bold; font-size: 30px;">{{ title }}</legend>
      </div>
-    <!-- TITLE -->
     <div class='form-group'>
         <label style='font-size: 20px; color: rgb(89, 90, 109);' for='playlist-title'>Title</label><br>
         <input class='form-control' id='playlist-title' type='text' name='title' value='{{ playlist.title }}' required>
     </div>
     
-    <!-- DESCRIPTION -->
     <div class='form-group'>
       <label style='font-size: 20px; color: rgb(89, 90, 109);' for='description'>Description</label><br>
       <input class='form-control' id='description' type='text' name='description' value='{{ playlist.description }}' />
     </div>
     
-    <!-- VIDEO IDS -->
     <div class='form-group'>
       <label style='font-size: 20px; color: rgb(89, 90, 109);' for='playlist-video-ids'>Videos</label><br>
       <textarea placeholder='Add the ID of the videos you want to include in your playlist. Separate with a newline.' class='form-control' id='playlist-video-ids' name='video_ids' rows='10'>{{ "\n".join(playlist.video_ids) }}</textarea>
@@ -29,4 +24,3 @@
     </div>
 </fieldset>
 
-<!-- BUTTON -->
