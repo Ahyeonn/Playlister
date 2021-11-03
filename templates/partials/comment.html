@@ -2,7 +2,11 @@
 
 <div class='card'>
     <div class='card-block'>
-        <h4 class='card-title'>{{ comment.title }}</h4>
-        <p class='card-text'>{{ comment.content }}</p>
+        <p style="padding-left: 20px;font-size: 20px; font-weight: bold;" class='card-title'>{{ comment.title }}</p>
+        <p style='padding-left: 20px;' class='card-text'>{{ comment.content }}</p>
     </div>
 </div>
+<p><form method='POST' action='/playlists/comments/{{comment._id }}'>
+    <input type='hidden' value='{{ playlist._id }}' name='playlist_id'/>
+    <button style='background-color: rgb(162, 172, 161); border-color: rgb(162, 172, 161);' class='btn btn-primary' type='submit'>Delete</button>
+</form></p>

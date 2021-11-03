@@ -85,9 +85,6 @@ def playlists_update(playlist_id):
     # take us back to the playlist's show page
     return redirect(url_for('playlists_show', playlist_id=playlist_id))
 
-# Add this header to distinguish Comment routes from Playlist routes
-########## COMMENT ROUTES ##########
-
 @app.route('/playlists/comments', methods=['POST'])
 def comments_new():
     comment = {
@@ -96,6 +93,11 @@ def comments_new():
         'content': request.form.get('content')
     }
     comments.insert_one(comment) 
+    return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
+
+@app.route('/playlists/comments/<comment_id>', methods=['POST'])
+def comments_delete(comment_id):
+    comments.delete_one({'_id': ObjectId(comment_id)})
     return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
 
 if __name__ == '__main__':

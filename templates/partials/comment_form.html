@@ -1,10 +1,10 @@
 <form action='/playlists/comments' method='POST'>
     <input type='hidden' value='{{ playlist._id }}' name='playlist_id'/>
     <fieldset>
-        <legend>Add a Comment</legend>
+        <legend style='padding-top: 15px; font-weight: bold; font-size: 30px; color: rgb(105, 114, 112);'>Add a Comment</legend>
         <!-- TITLE -->
         <div class='form-group'>
-            <label>Title</label><br>
+            <label style="font-size: 20px;">Title</label><br>
             <input class='form-control'
                 type='text'
                 name='title'
@@ -13,7 +13,7 @@
 
         <!-- DESCRIPTION -->
         <div class='form-group'>
-            <label>Description</label><br>
+            <label style="font-size: 20px;">Description</label><br>
             <textarea class='form-control'
                 name='content'
                 rows='10'
@@ -23,6 +23,6 @@
 
     <!-- BUTTON -->
     <div class='form-group'>
-        <button class='btn btn-primary' type='submit'>Save Comment</button>
+        <button style='background-color: rgb(162, 172, 161); border-color: rgb(162, 172, 161);' class='btn btn-primary' type='submit'>Save Comment</button>
     </div>
 </form>

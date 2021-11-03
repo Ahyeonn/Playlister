@@ -2,17 +2,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Playlists</h1>
-<a href='/playlists/new'>New Playlist</a>
+<div style="display: flex; justify-content: center;">
+    <h1 style="color:rgb(100, 110, 118);padding-top: 15px;">Playlists</h1>
+</div>
+<div style=" width: 110px; height: 37px;display: flex; align-items: center; justify-content: center; border-radius: 20px; background-color: rgb(162, 172, 161);">
+    <a style="font-weight: bold;color: white;" href='/playlists/new'>Add Playlist</a>
+</div>
 
 <div class='row'>
     {% for playlist in playlists %}
-        <div class='col-md-3'>
+        <div class='col-md-3' style="padding-top: 20px;">
             <div class="card bg-light">
-                <div class="card-header"><h2><a href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2></div>
-                <div class="card-body">
-                  <small>{{ playlist.description }}</small>
-                  <p>Rate for the video: {{ playlist.rating }}</p>                </div>
+                <div style="background-color: rgb(238, 232, 221);" class="card-header"><h2><a style='color: rgb(107, 110, 114);' href='/playlists/{{ playlist._id }}'>{{ playlist.title }}</a></h2></div>
+                <div style="color: rgb(100, 110, 118);" class="card-body">
+                  <p>{{ playlist.description }}</p>
+                  <small>Rate for the video: {{ playlist.rating }}</small>                
+                </div>
             </div>
         </div>
     {% endfor %}
