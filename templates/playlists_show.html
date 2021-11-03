@@ -28,10 +28,10 @@
             </form></p>
         </div>
     </div>
-    <div class='col-sm-6 col-sm-offset-3' style="margin-top: 25px; background-color: rgb(240, 234, 223); border-right-style: solid; border-color: white; border-width: 30px;">
+    <div class='col-sm-6 col-sm-offset-3' style="margin-top: 25px; background-color: rgb(240, 234, 223); border-right-style: solid; border-color: white; border-width: 30px; border-bottom-style: solid;">
         {% include 'partials/comment_form.html' %}
     </div>
-    <div class="col-sm-6 col-sm-offset-3" style="margin-top: 25px; background-color: rgb(240, 234, 223)">
+    <div class="col-sm-6 col-sm-offset-3" style="margin-top: 25px; background-color: rgb(240, 234, 223); border-bottom-style: solid;border-color: white; border-width: 30px;">
         <p style="font-size: 25px; padding-top: 15px; font-weight: bold; font-size: 30px; color: rgb(105, 114, 112);">Comments History</p>
         {% for comment in comments %}
             {% include 'partials/comment.html' %}
