@@ -13,7 +13,7 @@ def video_url_creator(id_lst):
     return videos
 
 uri = os.environ.get('MONGODB_URI')
-# uri = 'mongodb://localhost/Playlister'
+uri = 'mongodb://localhost/Playlister'
 client = MongoClient(uri)
 db = client.get_default_database()
 playlists = db.playlists
