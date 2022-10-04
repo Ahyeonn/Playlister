@@ -12,8 +12,7 @@ def video_url_creator(id_lst):
         videos.append(video)
     return videos
 
-uri = os.environ.get('MONGODB_URI')
-uri = 'mongodb://localhost/Playlister'
+uri = os.environ.get('MONGODB_URI','mongodb://mongodb:27017/Playlister')
 client = MongoClient(uri)
 db = client.get_default_database()
 playlists = db.playlists
@@ -96,5 +95,5 @@ def comments_delete(comment_id):
     return redirect(url_for('playlists_show', playlist_id=request.form.get('playlist_id')))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5000)
 
